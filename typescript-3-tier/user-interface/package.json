@@ -1,0 +1,39 @@
+{
+  "name": "user-interface",
+  "version": "1.0.0",
+  "description": "Simple SPA user interface for CRUD operations",
+  "main": "index.html",
+  "scripts": {
+    "build": "tsc",
+    "build:production": "npm run prestart && npm prune --production",
+    "watch": "tsc --w",
+    "prestart": "npm run build && func extensions install",
+    "start:host": "live-server --open=./index.html",
+    "start": "npm-run-all --parallel start:host watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goodtocode/templates.git"
+  },
+  "keywords": [
+    "HTML",
+    "TypeScript",
+    "SPA",
+    "JavaScript",
+    "Bootstrap"
+  ],
+  "author": "GoodToCode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goodtocode/templates/issues"
+  },
+  "homepage": "https://github.com/goodtocode/templates#readme",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "jquery": "^3.6.0",
+    "live-server": "^1.2.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.7.3"
+  }
+}

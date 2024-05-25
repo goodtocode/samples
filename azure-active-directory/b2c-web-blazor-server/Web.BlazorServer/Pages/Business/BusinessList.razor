@@ -1,0 +1,54 @@
+﻿@page "/businesssearch"
+@using Goodtocode.Samples.BlazorServer.Data;
+@using Goodtocode.Samples.Domain;
+
+@inject BusinessService Service
+
+<PageTitle>Business Search</PageTitle>
+
+<h1>Business Search</h1>
+
+<p>Search for businesses</p>
+<input placeholder="Business Name" @bind="businessName" />
+<button class="btn btn-primary" @onclick="GetBusineses">Search</button>
+@if (alertMessage.Length > 0)
+{
+    <div class="alert alert-danger" role="alert" @bind="alertMessage"></div>
+}
+
+@if (businesses.Count() > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Name</th>
+                <th>Tax Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var business in businesses)
+            {
+                <tr>
+                    <td>@business.BusinessKey</td>
+                    <td>@business.BusinessName</td>
+                    <td>@business.TaxNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private string alertMessage = string.Empty;
+    private string businessName = string.Empty;
+    private IEnumerable<BusinessEntity> businesses = new List<BusinessEntity>();
+
+    private async Task GetBusineses()
+    {
+        alertMessage = string.Empty;
+        businesses = await Service.GetBusinessesAsync(businessName);
+        if (businesses.Count() == 0)
+            alertMessage = "No businesses found";
+    }
+}

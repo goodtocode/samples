@@ -1,0 +1,11 @@
+﻿$title-color: grey;
+$title-font-size: medium;
+
+p {
+    color: $title-color;
+    font-size: $title-font-size;
+}
+
+tr {
+    cursor: pointer;
+}

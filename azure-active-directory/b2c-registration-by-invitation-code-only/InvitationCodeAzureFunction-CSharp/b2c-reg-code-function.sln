@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "b2c-reg-code-function", "b2c-reg-code-function.csproj", "{647FD9CC-D690-4D3E-A895-0D224D762C7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{647FD9CC-D690-4D3E-A895-0D224D762C7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{647FD9CC-D690-4D3E-A895-0D224D762C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{647FD9CC-D690-4D3E-A895-0D224D762C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{647FD9CC-D690-4D3E-A895-0D224D762C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F07A48AF-EEA0-42F2-8FC4-DA0CF122589E}
+	EndGlobalSection
+EndGlobal

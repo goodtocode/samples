@@ -1,0 +1,99 @@
+﻿@page "/forecasts"
+@page "/forecasts/{PageSize:int}/{Page:int}"
+@using Microsoft.AspNetCore.Authorization
+
+@attribute [Authorize]
+
+<PageTitle>Weather Forecasts</PageTitle>
+
+<h1 class="title">Weather Forecasts </h1>
+
+@if (ViewModel == null && string.IsNullOrWhiteSpace(ErrorMessage))
+{
+    <p>
+        <div class="spinner-border" style="height: 3rem; width: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </p>
+}
+else if (ViewModel != null)
+{
+    <RadzenButton class="float-start" Text="+New " ButtonStyle="ButtonStyle.Info" Click="@ShowAddWeatherForecastModal"/>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Zipcodes</th>
+            <th>Temp. (F)</th>
+            <th>Temp. (C)</th>
+            <th>Summary</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var forecast in ViewModel.Items)
+        {
+            <tr @onclick="@(() => NavigateToDetailsPage(forecast.Key))">
+                <td>@forecast.Date.ToString("d")</td>
+                <td>@forecast.ZipCodes</td>
+                <td>@forecast.TemperatureF</td>
+                <td>@forecast.TemperatureC</td>
+                <td>@forecast.Summary</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+
+
+            @if (ViewModel.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a @onclick="() => SetAndRefreshViewModel(ViewModel.PageNumber - 1)" class="page-link" href="/forecasts/@PageSize/@(ViewModel.PageNumber - 1)">Back</a>
+                </li>
+            }
+            else
+            {
+                <a class="page-link">Back</a>
+            }
+
+            @for (var paginationPage = 1; paginationPage < ViewModel.TotalPages + 1; paginationPage++)
+            {
+                var selectedClass = "";
+                var selectedPage = paginationPage;
+                if (paginationPage == ViewModel.PageNumber)
+                {
+                    selectedClass = "active";
+                }
+
+                <li class="page-item @selectedClass">
+                    <a @onclick="() => SetAndRefreshViewModel(selectedPage)" class="page-link" href="/forecasts/@PageSize/@selectedPage">
+                        @(paginationPage)
+                    </a>
+                </li>
+            }
+
+            @if (ViewModel.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" @onclick="@(() => SetAndRefreshViewModel(ViewModel.PageNumber + 1))" href="/forecasts/@PageSize/@ViewModel.PageNumber">Next</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+
+@if (!string.IsNullOrWhiteSpace(ErrorMessage))
+{
+    <div class="alert alert-info" role="alert">
+        @ErrorMessage
+    </div>
+}

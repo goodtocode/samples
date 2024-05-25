@@ -1,0 +1,24 @@
+﻿1.  Use PM>
+2.  Set Default Project to Aacn.Coffee.Infrastructure
+3.  Invoke Migration Commands
+
+Add Migration
+add-migration init -context Coffee.Infrastructure.Persistence.ForecastsContext -verbose -s Presentation.WebApi -OutputDir Persistence/Migrations
+add-migration ForecastsView -context Coffee.Infrastructure.Persistence.ForecastsContext -verbose -s Presentation.WebApi -OutputDir Persistence/Migrations
+
+Rollback Migration
+remove-migration -context Coffee.Infrastructure.Persistence.CoffeeContext  -s Presentation.WebApi –force
+
+Update Database
+update-database -context Coffee.Infrastructure.Persistence.ForecastsContext  -s Presentation.WebApi
+
+Reverse engineer view example
+scaffold-dbcontext "Data Source=localhost;Initial Catalog=weather.test;Min Pool Size=3;MultipleActiveResultSets=True;Trusted_Connection=Yes;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -tables WeatherForecastView -context "WeatherChannelContext"  -force -StartupProject WebApi
+
+Drop Database
+drop-database -s Presentation.WebApi
+
+update-database -s Presentation.WebApi
+remove-migration -s Presentation.WebApi
+Remove-migration -s Presentation.WebApi
+Update-Database -migration ViewUseTempF -s Presentation.WebApi

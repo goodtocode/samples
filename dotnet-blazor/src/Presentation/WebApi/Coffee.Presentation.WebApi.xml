@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Coffee.Presentation.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Coffee.Presentation.WebApi.Common.ApiExceptionFilterAttribute">
+            <summary>
+                Filter to handle ApiExceptionFilterAttribute
+            </summary>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.Common.ApiExceptionFilterAttribute.#ctor">
+            <summary>
+                ApiExceptionFilterAttribute including ValidationException, NotFoundException, UnauthorizedAccessException,
+                ForbiddenAccessException
+                NotFoundException
+            </summary>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.Common.ApiExceptionFilterAttribute.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+                Handles OnException
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.ForecastCalculations.CalculationsController.GetCelsiusToFahrenheitCalculationConversionQuery(System.Int32)">
+             <summary>Get Celsius To Fahrenheit Calculation Conversion Query</summary>
+             <remarks>
+             Sample request:
+            
+                    "Key": 10
+                    "api-version":  1.0
+             
+             </remarks>
+             <returns>int</returns>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.ForecastCalculations.CalculationsController.GetFahrenheitToCelsiusCalculationConversionQuery(System.Int32)">
+             <summary>Get Fahrenheit To Celsius Calculation Conversion Query</summary>
+             <remarks>
+             Sample request:
+            
+                    "Key": 10
+                    "api-version":  1.0
+             
+             </remarks>
+             <returns>int</returns>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.ForecastsLists.ForecastsListsController.GetCoffeePaginatedQuery(Coffee.Core.Application.ForecastLists.Queries.GetPaginated.GetForecastsPaginatedQuery)">
+             <summary>Get Paginated Query</summary>
+             <remarks>
+             Sample request:
+            
+                    "PageNumber": 1
+                    "PageSize" : 10
+                    "api-version":  1.0
+             
+             </remarks>
+             <returns>ForecastVm</returns>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.ForecastsLists.ForecastsListsController.GetAll(System.String)">
+             <summary>Get All Forecasts Query</summary>
+             <remarks>
+             Sample request:
+            
+                    "Key": 60fb5e99-3a78-43df-a512-7d8ff498499e
+                    "api-version":  1.0
+             
+             </remarks>
+             <returns>ForecastVm</returns>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.Forecasts.ForecastsController.Get(System.Guid)">
+             <summary>Get Weather Forecast Query</summary>
+             <remarks>
+             Sample request:
+            
+                    "Key": 60fb5e99-3a78-43df-a512-7d8ff498499e
+                    "api-version":  1.0
+             
+             </remarks>
+             <returns>WeatherForecastVm</returns>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.Forecasts.ForecastsController.ProvisionUserCommand(Coffee.Core.Application.Forecasts.Commands.Add.AddForecastCommand)">
+             <summary>
+             Add Forecast Command
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 HttpPost Body
+                 {
+                    "Key": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "Date": "2023-06-08T23:32:05.256Z",
+                    "TemperatureC": 0,
+                    "Zipcodes": [ 92602, 92673 ]
+                 }
+            
+                 "version":  1.0
+             </remarks>
+             <param name="command"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.Forecasts.ForecastsController.ProvisionUserCommand(Coffee.Core.Application.Forecasts.Commands.Update.UpdateForecastCommand)">
+             <summary>
+             Update Forecast Command
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 HttpPut Body
+                 {
+                    "Key": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "Date": "2023-06-08T23:32:05.256Z",
+                    "TemperatureC": 0,
+                    "Zipcodes": [ 92602, 92673 ]
+                 }
+            
+                 "version":  1.0
+             </remarks>
+             <param name="command"></param>
+             <returns>NoContent</returns>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.Forecasts.ForecastsController.ProvisionUserCommand(Coffee.Core.Application.Forecasts.Commands.Patch.PatchForecastCommand)">
+             <summary>
+             Patch Forecast Command
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 HttpPatch Body
+                 {
+                    "Key": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "Date": "2023-06-08T23:32:05.256Z",
+                    "TemperatureC": 0,
+                    "Zipcodes": [ 92602, 92673 ]
+                 }
+            
+                 "version":  1.0
+             </remarks>
+             <param name="command"></param>
+             <returns>NoContent</returns>
+        </member>
+        <member name="M:Coffee.Presentation.WebApi.Forecasts.ForecastsController.Remove(System.Guid)">
+             <summary>Remove Forecast Command</summary>
+             <remarks>
+             Sample request:
+            
+                    "Key": 60fb5e99-3a78-43df-a512-7d8ff498499e
+                    "api-version":  1.0
+             
+             </remarks>
+             <returns>NoContent</returns>
+        </member>
+    </members>
+</doc>

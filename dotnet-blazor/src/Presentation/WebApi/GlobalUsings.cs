@@ -1,0 +1,12 @@
+﻿global using FluentValidation.AspNetCore;
+global using MediatR;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.ApiExplorer;
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using Microsoft.Extensions.Options;
+global using Microsoft.Identity.Web;
+global using Microsoft.OpenApi.Models;
+global using Serilog;
+global using Swashbuckle.AspNetCore.SwaggerGen;
+global using System.Reflection;

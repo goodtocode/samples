@@ -1,0 +1,48 @@
+﻿@using System.Collections
+
+<EditForm Model="@EditForecastForm" OnValidSubmit="@SubmitForm">
+    <DataAnnotationsValidator />
+    <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+
+    <div class="mb-9 input-section">
+        <RadzenText class="form-label" TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Date</RadzenText>
+        <RadzenDatePicker @bind-Value=@EditForecastForm.Date DateFormat="d" class="w-100" />
+        <ValidationMessage For="@(() => EditForecastForm.Date)" />
+    </div>
+    
+   
+    <div class="mb-9 input-section">
+        <RadzenText class="form-label" TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Fahrenheit</RadzenText>
+        <RadzenNumeric TValue="int" Change="@OnFahrenheitValueChangedAsync" @bind-Value="@EditForecastForm.TemperatureF" /> &nbsp;&nbsp;
+        <ValidationMessage For="@(() => EditForecastForm.TemperatureF)" />
+    </div>
+   
+    <div class="mb-9 input-section">
+        <RadzenText class="form-label" TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Celsius</RadzenText>
+        <RadzenNumeric TValue="int" Change="@OnCelsiusValueChangedAsync" @bind-Value="@EditForecastForm.TemperatureC" /> &nbsp;&nbsp;
+        <ValidationMessage For="@(() => EditForecastForm.TemperatureC)" />
+    </div>
+    
+    <div class="mb-9 slider input-section">
+        <RadzenText class="form-label" TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Slide to Adjust</RadzenText>
+        <RadzenSlider Change="@OnFahrenheitValueChangedAsync" @bind-Value=@EditForecastForm.TemperatureF TValue="int" Min="-200" Max="500" />
+    </div>
+    
+    <div class="mb-9 input-section slider-section">
+    
+        <RadzenText class="form-label" TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Zipcode:</RadzenText>
+        <InputText id="zipcode" class="form-control" @bind-Value="@EditForecastForm.ZipcodesToString" placeholder="Zipcode"></InputText>
+        <ValidationMessage For="@(() => @EditForecastForm.ZipcodesToString)" />
+    </div>
+    <br />
+    <br>
+    <button @onclick="DeleteForecast" type="button" class="btn btn-sm">Delete</button>
+    <button type="submit" class="btn btn-primary float-end">Save</button>
+</EditForm>
+
+@if (!string.IsNullOrWhiteSpace(ErrorMessage))
+{
+    <div class="alert alert-info" role="alert">
+        @ErrorMessage
+    </div>
+}

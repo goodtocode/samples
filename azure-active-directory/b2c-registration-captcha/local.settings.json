@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "BASIC_AUTH_USERNAME": "TestUser",
+    "BASIC_AUTH_PASSWORD": "1e22d6b9-93e9-488d-bceb-ea08e5e07659",
+    "CAPTCHA_SECRET_KEY": "6LcL3xAbAAAAAK_7A4VjijauJK2QFFMkRj6P1VTf",
+    "B2C_EXTENSIONS_APP_ID": "d1da2c95-7c33-4985-8228-6d9ab350e898"
+  }
+}

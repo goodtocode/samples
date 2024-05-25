@@ -1,0 +1,99 @@
+﻿@page "/forecasts/{Key:guid}"
+
+@if (ViewModel == null)
+{
+    <p>
+        <div class="spinner-border" style="height: 3rem; width: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </p>
+}
+else
+{
+    <div class="row g-0">
+        <div class="col-lg-7 col-xl-8 pe-lg-2 mb-3">
+            <div class="card h-lg-100 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="table-responsive scrollbar">
+                        <table class="table table-dashboard mb-0 table-borderless fs--1 border-200">
+                            <thead class="bg-light">
+                            <tr class="text-900 ">
+                                <th>Forecast</th>
+
+                                <th class="pe-x1 text-end"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="border-bottom border-200">
+                                <td>
+                                    <div class="d-flex align-items-center position-relative">
+                                        <div class="flex-1 ms-3">
+                                            <p class="fw-semi-bold mb-0 text-500">Date</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-end fw-semi-bold">@ViewModel.Date.ToString("d")</td>
+                            </tr>
+                            <tr class="border-bottom border-200">
+                                <td>
+                                    <div class="d-flex align-items-center position-relative">
+                                        <div class="flex-1 ms-3">
+                                            <h6 class="mb-1 fw-semi-bold">Temp F</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-end fw-semi-bold">@ViewModel.TemperatureF</td>
+                            </tr>
+
+                            <tr class="border-bottom border-200">
+                                <td>
+                                    <div class="d-flex align-items-center position-relative">
+                                        <div class="flex-1 ms-3">
+                                            <h6 class="mb-1 fw-semi-bold">Temp C</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-end fw-semi-bold">@ViewModel.TemperatureC</td>
+                            </tr>
+
+                            <tr class="border-bottom border-200">
+                                <td>
+                                    <div class="d-flex align-items-center position-relative">
+                                        <div class="flex-1 ms-3">
+                                            <h6 class="mb-1 fw-semi-bold">Zipcodes</h6>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-end fw-semi-bold">@string.Join(" ", ViewModel.Zipcodes)</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-light py-2">
+                    <div class="row flex-between-center">
+
+                        <button class="btn btn-xs" onclick="@ShowEditModal">Edit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="float-end">
+                <ul class="nav ">
+                    <li class="nav-item ">
+                        <a @onclick="NavigateToForecastsPage" href="/forecasts" class="nav-link " aria-current="page">Back to Forecasts </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+@if (!string.IsNullOrWhiteSpace(ErrorMessage))
+{
+    <div class="alert alert-info" role="alert">
+        @ErrorMessage
+    </div>
+}

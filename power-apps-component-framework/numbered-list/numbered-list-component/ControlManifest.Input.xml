@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <control namespace="Components" constructor="NumberedListComponent" display-name-key="NumberedListComponent" description-key="Numbered list component for ol behavior"
+  control-type="standard" version="1.0.0">
+    <resources>
+      <code path="./index.ts" order="1"/>
+    </resources>
+    <property name="listItems" display-name-key="List Items" description-key="The numbered list items." of-type="SingleLine.Text" usage="bound" />
+  </control>
+</manifest>
